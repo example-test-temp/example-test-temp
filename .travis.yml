@@ -14,10 +14,10 @@ notifications:
     on_failure: always # default: always (which is annoying, as it should be)
 before_script:
   - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
-
-# # see https://docs.travis-ci.com/user/deployment/heroku/
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   api_key:
-#     secure: "YOUR ***ENCRYPTED*** API KEY HERE"
+deploy: # see https://docs.travis-ci.com/user/deployment/heroku/
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  run: 'npm run seed'
+  app: polar-sea-13622
+  api_key:
+    secure: p75Y4pG5/4QlmDxHzpGs0xe4Ed19QMnY0XjXKGXaphQhbZADdQMHJA8+sLlKifN5l3tTpS/ieWiZafk7e8h89XXxvKXQpXdRILIxe7mxtaaFjlHqLaAvQ9EOnn0t9w3oLn5/9O8EaL3qmf6S6+uG1x7vkPVkSKqSpedgaSHqwPlqL2HFtdW1+IZ6i1i3EgE5texvGpH/t20zdXhwJYIH81ov6UmhAwVgrDnUf1/TjRu6r6pQ+1yPsx82lk3DFTC8a9BoK60Kto2Ujn4k0p596XqC4Bjr41iMcNrL6TYLBrDI9opg2FpaJtDrDdmpfvAoUHjqUqaTskaU4GeHT8skIQqz9bcw4BwJP4BTihNVk1y4ZCYgckJtMtwF9k3BZ4f5CAns6IDnjW1Oxd9GhWL5apYvnuJJwuVbxwfkNEh5r1Gwe4ioYY0ZbK7Kdaj39LU98d89u61zy3MnOlC+DYeB9Nk0rSOp01wnXz9Thbyx1Hp3nLPuCVdMEV1RawUMXiSVk0vSOfdmycv1d5qsoExvgqTvXX65b3BgiqVGP6tcVHqaOOKbSf1JcdK2D5qUZ82uS6Iujdc6hZIiI74tWa2+8O6gYZKT+E/bya9YHlr2jixkGAfHyW7cT73F0GQXS04IialoXLFoOAAUPCLDqv1951xikSTS4qJt2BPe5mqva+k=
